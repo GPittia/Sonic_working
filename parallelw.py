@@ -72,7 +72,7 @@ config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                      'config-feedforward')
 
 p = neat.Population(config)
-p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-13')
+#p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-13')
 p.add_reporter(neat.StdOutReporter(True))
 stats = neat.StatisticsReporter()
 p.add_reporter(stats)
