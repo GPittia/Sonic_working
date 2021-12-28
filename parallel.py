@@ -24,6 +24,7 @@ class Worker(object):
 
         net = neat.nn.FeedForwardNetwork.create(self.genome, self.config)
 
+        current_max_fitness = 0
         fitness = 0
         fitness_current = 0
         xpos = 0
