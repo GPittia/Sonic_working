@@ -42,21 +42,37 @@ class Worker(object):
 
             ob, rew, done, info = self.env.step(actions)
 
-            xpos = info['x']
+            fitness_current += rew
 
-            if xpos > xpos_max:
-                xpos_max = xpos
+            if fitness_current > current_max_fitness:
+                current_max_fitness = fitness_current
                 counter = 0
-                fitness += 1
             else:
-                counter += 1
+                if fitness_current < 150:
+                    counter += 1
+                else:
+                    counter += 0.25
 
-            if counter > 250:
+            if done or counter == 280:
                 done = True
+                print(genome_id, fitness_current)
 
-            if xpos == info['screen_x_end'] and xpos > 500:
-                fitness += 100000
-                done = True
+            genome.fitness = fitness_current
+#            xpos = info['x']
+
+#            if xpos > xpos_max:
+#                xpos_max = xpos
+#                counter = 0
+#                fitness += 1
+#            else:
+#                counter += 1
+
+#            if counter > 250:
+#                done = True
+
+#           if xpos == info['screen_x_end'] and xpos > 500:
+#              fitness += 100000
+#                done = True
 
         print(fitness)
         return fitness
