@@ -1,5 +1,6 @@
 import retro
 import neat
+import pickle
 
 def replay_genome(config_path, genome_path="winner.pkl"):
     # Load requried NEAT config
